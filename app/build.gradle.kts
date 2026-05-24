@@ -176,6 +176,7 @@ dependencies {
     implementation(libs.paging.runtime.ktx)
     implementation(libs.paging.compose)
     implementation(libs.browser)
+    implementation(libs.geckoview)
     implementation(libs.navigation.compose)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.ktx)
