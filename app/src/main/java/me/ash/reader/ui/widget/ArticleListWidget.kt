@@ -132,7 +132,8 @@ fun WidgetContainer(modifier: GlanceModifier = GlanceModifier, content: @Composa
             .fillMaxSize()
             .background(GlanceTheme.colors.surface)
             .appWidgetBackground()
-            .widgetCornerRadius(),
+            .widgetCornerRadius()
+            .padding(16.dp),
         content = { content() },
     )
 }
@@ -178,11 +179,7 @@ fun Header(text: String, theme: Theme, modifier: GlanceModifier = GlanceModifier
                     fontSize = fontSize,
                     fontWeight = FontWeight.Bold,
                     color = GlanceTheme.colors.onSurface,
-                    fontFamily =
-                        when (theme) {
-                            Theme.Serif -> FontFamily.Serif
-                            Theme.SansSerif -> FontFamily.SansSerif
-                        },
+                    fontFamily = FontFamily.Serif,
                 ),
             maxLines = 1,
         )
@@ -273,17 +270,9 @@ fun ArticleItem(article: Article, theme: Theme, modifier: GlanceModifier = Glanc
             style =
                 TextStyle(
                     fontSize = 16.sp,
-                    fontWeight =
-                        when (theme) {
-                            Theme.Serif -> FontWeight.Bold
-                            Theme.SansSerif -> FontWeight.Bold
-                        },
+                    fontWeight = FontWeight.Bold,
                     color = GlanceTheme.colors.onSurface,
-                    fontFamily =
-                        when (theme) {
-                            Theme.Serif -> FontFamily.Serif
-                            Theme.SansSerif -> FontFamily.SansSerif
-                        },
+                    fontFamily = FontFamily.Serif,
                 ),
             maxLines = 2,
         )

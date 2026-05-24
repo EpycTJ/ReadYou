@@ -25,6 +25,8 @@ sealed class BasicFontsPreference(val value: Int) : Preference() {
 
     object GoogleSans : BasicFontsPreference(1)
 
+    object Serif : BasicFontsPreference(2)
+
     object External : BasicFontsPreference(5)
 
     override fun put(context: Context, scope: CoroutineScope) {
@@ -40,6 +42,7 @@ sealed class BasicFontsPreference(val value: Int) : Preference() {
         when (this) {
             System -> context.getString(R.string.system_default)
             GoogleSans -> context.getString(R.string.google_sans)
+            Serif -> "Serif"
             External -> context.getString(R.string.external_fonts)
         }
 
@@ -47,6 +50,7 @@ sealed class BasicFontsPreference(val value: Int) : Preference() {
         when (this) {
             System -> FontFamily.Default
             GoogleSans -> GoogleSansFontFamily
+            Serif -> FontFamily.Serif
             External ->
                 ExternalFonts.loadBasicTypography(context).displayLarge.fontFamily
                     ?: FontFamily.Default
@@ -56,18 +60,20 @@ sealed class BasicFontsPreference(val value: Int) : Preference() {
         when (this) {
             System -> SystemTypography
             GoogleSans -> SystemTypography.applyFontFamily(GoogleSansFontFamily)
+            Serif -> SystemTypography.applyFontFamily(FontFamily.Serif)
             External -> ExternalFonts.loadBasicTypography(context)
         }
 
     companion object {
 
-        val default = GoogleSans
-        val values = listOf(GoogleSans, System, External)
+        val default = Serif
+        val values = listOf(Serif, GoogleSans, System, External)
 
         fun fromPreferences(preferences: Preferences): BasicFontsPreference =
             when (preferences[DataStoreKey.keys[basicFonts]?.key as Preferences.Key<Int>]) {
                 0 -> System
                 1 -> GoogleSans
+                2 -> Serif
                 5 -> External
                 else -> default
             }
