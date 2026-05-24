@@ -12,12 +12,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalDensity
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
@@ -121,11 +123,12 @@ private fun ArticleImage(
     Image(
         painter = painter,
         contentDescription = contentDescription,
-        contentScale = if (fillMaxWidth) ContentScale.FillWidth else ContentScale.Inside,
+        contentScale = if (fillMaxWidth) ContentScale.FillWidth else ContentScale.Fit,
         modifier =
             modifier
                 .fillMaxWidth()
                 .padding(contentPadding)
+                .clip(RoundedCornerShape(8.dp))
                 .clip(shape)
                 .then(
                     if (onClick != null) {
