@@ -44,3 +44,6 @@
 -dontwarn org.slf4j.impl.StaticLoggerBinder
 
 -keep class me.ash.reader.R$font { *; }
+# Fix for R8 missing java.beans classes due to yaml.snakeyaml (or geckoview / dependencies)
+-dontwarn java.beans.**
+-keep class java.beans.** { *; }
