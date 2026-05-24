@@ -29,6 +29,7 @@ import me.ash.reader.infrastructure.preference.ReadingRendererPreference
 import me.ash.reader.ui.component.reader.LocalTextContentWidth
 import me.ash.reader.ui.component.reader.Reader
 import me.ash.reader.ui.component.scrollbar.drawVerticalScrollIndicator
+import me.ash.reader.ui.component.webview.RYGeckoView
 import me.ash.reader.ui.component.webview.RYWebView
 import me.ash.reader.ui.ext.extractDomain
 import me.ash.reader.ui.ext.roundClick
@@ -95,7 +96,7 @@ fun Content(
                             // padding
                             headline()
 
-                            RYWebView(
+                            RYGeckoView(
                                 modifier = Modifier.fillMaxSize(),
                                 content = content,
                                 refererDomain = link.extractDomain(),

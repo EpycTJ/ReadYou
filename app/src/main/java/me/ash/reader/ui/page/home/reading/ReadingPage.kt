@@ -14,6 +14,7 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.rememberScrollState
@@ -46,6 +47,8 @@ import me.ash.reader.infrastructure.android.TextToSpeechManager
 import me.ash.reader.infrastructure.preference.LocalPullToSwitchArticle
 import me.ash.reader.infrastructure.preference.LocalReadingAutoHideToolbar
 import me.ash.reader.infrastructure.preference.LocalReadingBoldCharacters
+import me.ash.reader.infrastructure.preference.LocalReadingPageTonalElevation
+import me.ash.reader.infrastructure.preference.ReadingPageTonalElevationPreference
 import me.ash.reader.infrastructure.preference.LocalReadingTextLineHeight
 import me.ash.reader.infrastructure.preference.not
 import me.ash.reader.ui.ext.collectAsStateValue
@@ -99,7 +102,11 @@ fun ReadingPage(
     var bringToTop by remember { mutableStateOf(false) }
 
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.surface,
+        containerColor = if (LocalReadingPageTonalElevation.current == ReadingPageTonalElevationPreference.Outlined) {
+            if (isSystemInDarkTheme()) androidx.compose.ui.graphics.Color(0xFF202124) else androidx.compose.ui.graphics.Color(0xFFF4F0E6)
+        } else {
+            MaterialTheme.colorScheme.surface
+        },
         content = { paddings ->
             Box(modifier = Modifier.fillMaxSize()) {
                 if (readerState.articleId != null) {

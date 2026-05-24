@@ -21,7 +21,7 @@ fun CanBeDisabledIconButton(
     disabled: Boolean,
     imageVector: ImageVector? = null,
     icon: @Composable () -> Unit = {},
-    size: Dp = 24.dp,
+    size: Dp = 20.dp,
     contentDescription: String?,
     tint: Color = LocalContentColor.current,
     onClick: () -> Unit = {},

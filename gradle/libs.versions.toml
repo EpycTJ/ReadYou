@@ -61,6 +61,8 @@ navigationevent = "1.0.0-beta01"
 composeBomStable = "2025.10.01"
 composeBomAlpha = "2025.10.01"
 
+geckoview = "132.0.20241021175835"
+
 [libraries]
 # AboutLibraries
 aboutlibraries-core = { group = "com.mikepenz", name = "aboutlibraries-core", version.ref = "aboutLibsRelease" }
@@ -151,6 +153,8 @@ mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", versio
 compose-bom-stable = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBomStable" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+geckoview = { module = "org.mozilla.geckoview:geckoview", version.ref = "geckoview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
